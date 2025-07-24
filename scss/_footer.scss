@@ -1,0 +1,75 @@
+@use "variables" as *;
+
+.footer {
+  background-color: #232323;
+  color: #f0ece0;
+  opacity: 0.8;
+  font-size: 1rem;
+  padding: 4.0625rem 2.25rem;
+  margin: 0 auto;
+  border-radius: 1.875rem;
+  max-width: $site-width;
+  display: flex;
+  flex-direction: column;
+  gap: 5rem;
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .footer-heading {
+    font-weight: 500;
+    color: #f0ece0;
+    opacity: 40%;
+    text-transform: uppercase;
+    line-height: 140%;
+    letter-spacing: 4%;
+  }
+  .top-wrapper {
+    display: flex;
+    justify-content: space-between;
+
+    gap: 5rem;
+    nav ul {
+      display: flex;
+      flex-direction: column;
+      gap: 0.875rem;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      font-weight: 600;
+    }
+    .col {
+      display: flex;
+      flex-direction: column;
+      gap: 2.25rem;
+    }
+    .contact-info {
+      display: flex;
+      gap: 3rem;
+      .socials {
+        display: flex;
+        gap: 1rem;
+      }
+    }
+    .payments {
+      display: flex;
+      gap: 1.5rem;
+    }
+    .footer-logo {
+      width: 200px;
+    }
+  }
+  .bottom-wrapper {
+    display: flex;
+    justify-content: space-between;
+    font-size: $text-small;
+    font-weight: 400;
+    color: #f0ece0;
+    opacity: 40%;
+    .links {
+      display: flex;
+      gap: 2rem;
+    }
+  }
+}

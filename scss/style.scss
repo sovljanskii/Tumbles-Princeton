@@ -1,0 +1,38 @@
+@use "variables" as *;
+@use "typography" as *;
+@use "header" as *;
+@use "footer" as *;
+@use "buttons" as *;
+@use "spacing" as *;
+@use "video" as *;
+* {
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-family: "Rubik", sans-serif;
+  font-size: 1.25rem;
+  margin: 0;
+  background-color: $bg-color;
+}
+
+section {
+  padding: $global-padding 0;
+  &.centered {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+}
+.container {
+  max-width: $site-width;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: $medium-space;
+}
+
+.radius {
+  border-radius: $radius;
+}

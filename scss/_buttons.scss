@@ -1,0 +1,23 @@
+@use "variables" as *;
+
+.button {
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  font-weight: 600;
+  text-decoration: none;
+  padding: 1.0625rem 2.0625rem;
+  border-radius: 50vw;
+  border: solid black 1px;
+  gap: 10px;
+}
+
+.button.primary {
+  background-color: $primary-color;
+  color: white;
+}
+
+.button.secondary {
+  border-color: $primary-color;
+  color: white;
+}
