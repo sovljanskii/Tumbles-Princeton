@@ -4,7 +4,14 @@ export class VideoLightbox extends HTMLElement {
     const shadow = this.attachShadow({ mode: "open" });
 
     const thumbnail = this.getAttribute("thumbnail") || "";
-    const video = this.getAttribute("video") || "";
+    const videoUrl = this.getAttribute("video") || "";
+    const altText = this.getAttribute("alt") || "Video thumbnail";
+
+    if (!thumbnail || !videoUrl) {
+      console.warn("<video-lightbox> missing 'thumbnail' or 'video' attribute");
+      shadow.innerHTML = `<p style="color:red;">Video component misconfigured</p>`;
+      return;
+    }
 
     shadow.innerHTML = `
       <style>
@@ -16,6 +23,7 @@ export class VideoLightbox extends HTMLElement {
         img {
           max-width: 100%;
           border-radius: 1rem;
+          display: block;
         }
         .play-button {
           position: absolute;
@@ -28,7 +36,7 @@ export class VideoLightbox extends HTMLElement {
           width: 60px;
           height: 60px;
           font-size: 2rem;
-          color: #1f2937;
+          color: #00C336;
           box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
           cursor: pointer;
         }
@@ -53,6 +61,7 @@ export class VideoLightbox extends HTMLElement {
           width: 100%;
           height: 450px;
           border-radius: 1rem;
+          border: none;
         }
         .close-button {
           position: absolute;
@@ -66,15 +75,15 @@ export class VideoLightbox extends HTMLElement {
         }
       </style>
 
-      <div class="wrapper">
-        <img src="${thumbnail}" alt="Video thumbnail" />
-        <button class="play-button">▶</button>
+      <div class="wrapper" tabindex="0" role="button" aria-label="Play video">
+        <img src="${thumbnail}" alt="${altText}" />
+        <button class="play-button" aria-hidden="true">▶</button>
       </div>
 
-      <div class="lightbox">
+      <div class="lightbox" tabindex="-1">
         <div class="popup">
-          <button class="close-button">✖</button>
-          <iframe src="${video}?autoplay=1" frameborder="0" allowfullscreen></iframe>
+          <button class="close-button" aria-label="Close video">✖</button>
+          <iframe title="Video player" allowfullscreen></iframe>
         </div>
       </div>
     `;
@@ -84,20 +93,45 @@ export class VideoLightbox extends HTMLElement {
     const close = shadow.querySelector(".close-button");
     const iframe = shadow.querySelector("iframe");
 
-    wrapper.addEventListener("click", () => {
+    const openLightbox = () => {
+      iframe.src = `${videoUrl}?autoplay=1`;
       lightbox.classList.add("active");
-    });
+      document.body.style.overflow = "hidden";
+      lightbox.focus(); // ensure Escape works
+    };
 
-    close.addEventListener("click", () => {
+    const closeLightbox = () => {
       lightbox.classList.remove("active");
-      iframe.src = iframe.src; // reset playback
+      iframe.src = "";
+      document.body.style.overflow = "";
+    };
+
+    // Click to open
+    wrapper.addEventListener("click", openLightbox);
+
+    // Enter to open (keyboard)
+    wrapper.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") openLightbox();
     });
 
+    // Close button
+    close.addEventListener("click", closeLightbox);
+
+    // Click outside iframe to close
     lightbox.addEventListener("click", (e) => {
-      if (e.target === lightbox) {
-        lightbox.classList.remove("active");
-        iframe.src = iframe.src;
+      if (e.target === lightbox) closeLightbox();
+    });
+
+    // Escape key — now attached to shadow root
+    shadow.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && lightbox.classList.contains("active")) {
+        closeLightbox();
       }
+    });
+
+    // Trick: refocus shadow to catch Escape if iframe steals it
+    lightbox.addEventListener("transitionend", () => {
+      lightbox.focus();
     });
   }
 }

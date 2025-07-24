@@ -1,9 +1,12 @@
+// ✅ FINAL app.js using dynamic templates & passing to components
+
 import "./components/ArrowButton.js";
 import { Home } from "./pages/Home.js";
 import "./components/VideoLightBox.js";
 
 const templates = new Map();
 
+// Load template from HTML file (only once)
 async function loadTemplate(url, id) {
   if (templates.has(id)) return;
 
@@ -15,8 +18,7 @@ async function loadTemplate(url, id) {
 
   const template = wrapper.querySelector("template");
   if (template) {
-    document.body.appendChild(template); // ✅ Inject it into DOM so Home() can find it
-    templates.set(id, template);
+    templates.set(id, template); // ✅ no longer appending to DOM
   } else {
     console.warn(`Template with id ${id} not found in ${url}`);
   }
@@ -27,7 +29,8 @@ function renderPage() {
   app.innerHTML = "";
 
   const header = templates.get("header-template")?.content.cloneNode(true);
-  const home = Home(); // now safe ✅
+  const homeTpl = templates.get("home-template");
+  const home = Home(homeTpl); // ✅ pass template
   const footer = templates.get("footer-template")?.content.cloneNode(true);
 
   if (header) app.appendChild(header);
@@ -38,7 +41,7 @@ function renderPage() {
 async function start() {
   await Promise.all([
     loadTemplate("/templates/header.html", "header-template"),
-    loadTemplate("/templates/home.html", "home-template"), // ✅ ensures it's in DOM before Home()
+    loadTemplate("/templates/home.html", "home-template"),
     loadTemplate("/templates/footer.html", "footer-template"),
   ]);
 

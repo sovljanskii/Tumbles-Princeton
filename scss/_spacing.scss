@@ -1,13 +1,13 @@
 @use "variables" as *;
 
 .small-gap {
-  margin: $small-space;
+  gap: $small-space;
 }
 
 .medium-gap {
-  margin: $medium-space;
+  gap: $medium-space;
 }
 
 .large-gap {
-  margin: $large-space;
+  gap: $large-space;
 }

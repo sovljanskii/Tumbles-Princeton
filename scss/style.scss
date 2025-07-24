@@ -1,10 +1,10 @@
 @use "variables" as *;
-@use "typography" as *;
-@use "header" as *;
-@use "footer" as *;
-@use "buttons" as *;
-@use "spacing" as *;
-@use "video" as *;
+@use "typography";
+@use "header";
+@use "footer";
+@use "buttons";
+@use "spacing";
+@use "marquee";
 * {
   margin: 0;
   padding: 0;
@@ -17,7 +17,7 @@ body {
 }
 
 section {
-  padding: $global-padding 0;
+  padding: $section-padding 0;
   &.centered {
     display: flex;
     flex-direction: column;
@@ -27,6 +27,7 @@ section {
 }
 .container {
   max-width: $site-width;
+  padding: 0 $global-padding;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
