@@ -10,14 +10,27 @@
   border-radius: 50vw;
   border: solid black 1px;
   gap: 10px;
+  transition: background-color 0.2s ease, color 0.2s ease,
+    border-color 0.2s ease;
+}
+.button:hover img {
+  transform: translateX(2px);
+  transition: transform 0.2s ease;
 }
 
 .button.primary {
   background-color: $primary-color;
   color: white;
 }
+.button.primary:hover {
+  background-color: green;
+}
 
 .button.secondary {
   border-color: $primary-color;
+  color: white;
+}
+.button.secondary:hover {
+  background-color: $primary-color;
   color: white;
 }
