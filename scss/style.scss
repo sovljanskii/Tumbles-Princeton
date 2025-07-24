@@ -5,6 +5,8 @@
 @use "buttons";
 @use "spacing";
 @use "marquee";
+@use "pages/home";
+
 * {
   margin: 0;
   padding: 0;
@@ -18,12 +20,7 @@ body {
 
 section {
   padding: $section-padding 0;
-  &.centered {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-  }
+  overflow: hidden;
 }
 .container {
   max-width: $site-width;
@@ -33,7 +30,13 @@ section {
   flex-direction: column;
   gap: $medium-space;
 }
-
+.centered {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
 .radius {
   border-radius: $radius;
 }

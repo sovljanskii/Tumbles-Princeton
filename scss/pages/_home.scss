@@ -1,0 +1,55 @@
+@use "../variables" as *;
+
+.why-tumbles-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: $medium-space;
+}
+
+.why-tumbles-cards .card {
+  position: relative;
+  display: flex;
+  align-items: center;
+  border: 2px solid #232323;
+  border-radius: $radius;
+  padding: $small-space;
+  text-align: center;
+
+  img {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    max-width: 100%;
+    height: auto;
+  }
+
+  p {
+    padding-top: 0.5rem;
+    font-size: 1.75rem;
+    font-weight: 700;
+    line-height: 2.3125rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .why-tumbles-cards {
+    padding-block: 2rem; // top and bottom space
+
+    display: flex !important;
+    flex-direction: row !important;
+    overflow-x: auto; // ✅ Only horizontal scroll
+    overflow-y: visible; // ✅ Allow vertical overflow (no cutting!)
+    scroll-snap-type: x mandatory;
+    gap: $medium-space;
+  }
+
+  .why-tumbles-cards .card {
+    max-width: 50svw;
+    flex: 0 0 auto;
+    scroll-snap-align: center;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center;
+  }
+}

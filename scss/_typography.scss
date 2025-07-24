@@ -1,7 +1,6 @@
 .h1 {
-  font-size: 5rem;
+  font-size: clamp(2.5rem, 0.2128rem + 8.5106vw, 5rem);
   font-weight: 500;
-  line-height: 5.625rem;
 }
 
 .h2 {
