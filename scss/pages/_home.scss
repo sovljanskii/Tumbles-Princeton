@@ -2,7 +2,7 @@
 
 .why-tumbles-cards {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: $medium-space;
 }
 
@@ -52,4 +52,35 @@
     flex-direction: column !important;
     align-items: center;
   }
+}
+.class-card {
+  display: flex;
+  gap: $medium-space;
+  border-radius: $radius;
+  border: 2px solid #232323;
+  height: 100%;
+  .content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 1.5rem;
+    padding: 2rem;
+  }
+  .right-image {
+    width: 100%;
+    height: 100%;
+    border-radius: 1rem;
+  }
+}
+.parties {
+  background-image: url("/assets/home/parties.webp");
+  background-size: cover;
+  background-position: center;
+  color: white;
+  border-radius: $radius;
+  padding: $large-space;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: $medium-space;
 }

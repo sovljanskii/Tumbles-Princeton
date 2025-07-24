@@ -3,13 +3,47 @@
 .footer {
   margin: 0 auto;
   max-width: $site-width;
-  .footer-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: $large-space;
+  .footer-top {
+    background-color: #7d4792;
+    color: white;
+    text-align: center;
+    padding: 4.0625rem 2.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: $medium-space;
+    width: fit-content;
+    margin: 0 auto;
+    border-radius: $radius;
+    .top-wrapper {
+      display: flex;
+      flex-direction: column;
+      gap: $small-space;
+    }
+    .input-wrapper {
+      display: flex;
+      input {
+        flex-grow: 1;
+        padding: $small-space;
+        border: #f0ece099 solid 1px;
+        background-color: transparent;
+        color: white;
+        border-radius: $radius;
+      }
+      input::placeholder {
+        color: #f0ece099;
+      }
+    }
+  }
+  .footer-bottom {
     background-color: #232323;
     color: #f0ece0;
     opacity: 0.8;
     font-size: 1rem;
     padding: 4.0625rem 2.25rem;
-    margin: $global-padding;
+    margin: 0 $global-padding $global-padding $global-padding;
     border-radius: 1.875rem;
     display: flex;
     flex-direction: column;
