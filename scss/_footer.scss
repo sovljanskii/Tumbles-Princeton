@@ -7,6 +7,7 @@
   flex-direction: column;
   gap: $large-space;
   padding: $global-padding $global-padding;
+
   .footer-top {
     background-color: #7d4792;
     color: white;
@@ -18,11 +19,13 @@
     gap: $medium-space;
     margin: 0 auto;
     border-radius: $radius;
+
     .top-wrapper {
       display: flex;
       flex-direction: column;
       gap: $small-space;
     }
+
     .input-wrapper {
       display: flex;
       flex-wrap: wrap;
@@ -61,7 +64,7 @@
       opacity: 40%;
       text-transform: uppercase;
       line-height: 140%;
-      letter-spacing: 4%;
+      letter-spacing: 0.04em;
     }
     .top-wrapper {
       display: grid;
@@ -112,6 +115,11 @@
       .links {
         display: flex;
         gap: 2rem;
+      }
+    }
+    @media (max-width: 768px) {
+      .bottom-wrapper {
+        flex-direction: column-reverse;
       }
     }
   }
