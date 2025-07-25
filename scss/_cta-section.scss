@@ -1,0 +1,80 @@
+@use "variables" as *;
+
+.cta-section .container {
+  color: white;
+  display: flex;
+  position: relative;
+  border-radius: $radius;
+  gap: $large-space;
+  padding: $medium-space;
+  .background-image {
+    position: absolute;
+    object-fit: cover;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    border-radius: $radius;
+  }
+  .top {
+    display: flex;
+    flex-direction: column;
+    gap: $small-space;
+  }
+
+  .smiley-image {
+    transform: rotate(+30deg);
+    width: 180px;
+  }
+  .cta-text {
+    background-color: #ff7124;
+    display: flex;
+    gap: 2rem;
+    justify-content: space-between;
+    align-items: center;
+    padding: $small-space;
+    border-radius: $radius;
+    p {
+      font-size: 2rem;
+    }
+  }
+  .smiley-image2 {
+    transform: rotate(+30deg);
+    display: none;
+  }
+}
+@media (max-width: 900px) {
+  .cta-section {
+    overflow: visible;
+    .container {
+      height: 60svh;
+      overflow: visible;
+    }
+    .smiley-image {
+      display: none;
+    }
+    .cta-text {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      flex-direction: column;
+      text-align: center;
+      justify-content: center;
+      width: 70%;
+      margin-top: $medium-space;
+      transform: translate(-50%, 30%);
+      padding: $medium-space !important;
+      .smiley-image2 {
+        display: block;
+        position: absolute;
+        top: -50px;
+        left: 50%;
+        transform: translate(-50%, 50%);
+      }
+    }
+    .smiley-image {
+      width: 150px;
+    }
+  }
+}

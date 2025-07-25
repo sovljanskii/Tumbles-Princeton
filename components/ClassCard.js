@@ -11,7 +11,7 @@ export class ClassCard extends HTMLElement {
     this.innerHTML = `
       <div class="class-card grid-2">
         <div class="content">
-          <div>
+          <div class="class-text">
             <h3 class="h2">${title}</h3>
             <p>${text}</p>
           </div>

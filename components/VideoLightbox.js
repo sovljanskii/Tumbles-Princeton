@@ -20,11 +20,13 @@ export class VideoLightbox extends HTMLElement {
           display: inline-block;
           cursor: pointer;
         }
+
         img {
           max-width: 100%;
           border-radius: 1rem;
           display: block;
         }
+
         .play-button {
           position: absolute;
           top: 50%;
@@ -40,6 +42,7 @@ export class VideoLightbox extends HTMLElement {
           box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
           cursor: pointer;
         }
+
         .lightbox {
           display: none;
           position: fixed;
@@ -49,20 +52,25 @@ export class VideoLightbox extends HTMLElement {
           align-items: center;
           z-index: 1000;
         }
+
         .lightbox.active {
           display: flex;
         }
+
         .popup {
           position: relative;
           width: 90%;
           max-width: 800px;
+          aspect-ratio: 16 / 9;
         }
+
         iframe {
           width: 100%;
-          height: 450px;
+          height: 100%;
           border-radius: 1rem;
           border: none;
         }
+
         .close-button {
           position: absolute;
           top: -40px;
@@ -72,6 +80,18 @@ export class VideoLightbox extends HTMLElement {
           color: white;
           border: none;
           cursor: pointer;
+        }
+
+        @media (max-width: 500px) {
+          .popup {
+            width: 95%;
+          }
+
+          .close-button {
+            top: -30px;
+            right: -10px;
+            font-size: 1.25rem;
+          }
         }
       </style>
 
@@ -97,7 +117,7 @@ export class VideoLightbox extends HTMLElement {
       iframe.src = `${videoUrl}?autoplay=1`;
       lightbox.classList.add("active");
       document.body.style.overflow = "hidden";
-      lightbox.focus(); // ensure Escape works
+      lightbox.focus();
     };
 
     const closeLightbox = () => {
@@ -106,30 +126,23 @@ export class VideoLightbox extends HTMLElement {
       document.body.style.overflow = "";
     };
 
-    // Click to open
     wrapper.addEventListener("click", openLightbox);
-
-    // Enter to open (keyboard)
     wrapper.addEventListener("keydown", (e) => {
       if (e.key === "Enter") openLightbox();
     });
 
-    // Close button
     close.addEventListener("click", closeLightbox);
 
-    // Click outside iframe to close
     lightbox.addEventListener("click", (e) => {
       if (e.target === lightbox) closeLightbox();
     });
 
-    // Escape key — now attached to shadow root
     shadow.addEventListener("keydown", (e) => {
       if (e.key === "Escape" && lightbox.classList.contains("active")) {
         closeLightbox();
       }
     });
 
-    // Trick: refocus shadow to catch Escape if iframe steals it
     lightbox.addEventListener("transitionend", () => {
       lightbox.focus();
     });

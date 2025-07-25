@@ -4,6 +4,8 @@ import "./components/VideoLightBox.js";
 import "./components/ClassCard.js";
 import "./components/ArrowButton.js";
 import "./components/TestimonialSlider.js";
+import "./components/ImgMarquee.js";
+import "./components/CtaSection.js";
 const templates = new Map();
 
 async function loadTemplate(url, id) {

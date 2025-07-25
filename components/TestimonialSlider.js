@@ -16,7 +16,7 @@ export class TestimonialSlider extends HTMLElement {
           text-align: center;
           font-family: "Rubik", sans-serif;
           position: relative;
-          width:100%;
+          width: 100%;
         }
 
         .title {
@@ -26,22 +26,35 @@ export class TestimonialSlider extends HTMLElement {
           margin: 0 auto 2rem;
         }
 
-        .quote-icon {
-          font-size: 3.75rem;
-          line-height: 0;
-          color: #222;
+        .content {
+          position: relative;
+          margin: 0 auto;
+          padding: 2rem 2rem;
+          transition: min-height 0.3s ease, min-width 0.4s ease;
         }
-          .left{
-            text-align: left;
-          }
-          .right{
-            text-align: right;
-          }
+
+        .quote-icon {
+          position: absolute;
+          font-size: 3.75rem;
+          line-height: 1;
+          color: #222;
+          pointer-events: none;
+        }
+
+        .left {
+          top: 0;
+          left: -1.5rem;
+        }
+
+        .right {
+          bottom: 0;
+          right: -1.5rem;
+        }
 
         .quote {
           font-style: italic;
           max-width: 700px;
-          margin: 1rem auto 2rem;
+          margin: 0 auto 2rem;
           font-size: 1.125rem;
           line-height: 1.7;
           color: #333;
@@ -93,36 +106,46 @@ export class TestimonialSlider extends HTMLElement {
         .nav button:hover {
           background: #00992c;
         }
-        .content{
-          max-width:1000px;
-          margin: 0 auto;
+
+        @media (max-width: 900px) {
+          .nav {
+            position: static;
+            transform: none;
+            margin-top: 2rem;
+            justify-content: center;
+            gap: 2rem;
           }
-          @media (max-width: 900px) {
-            .nav {
-                position: static;
-                transform: none;
-                margin-top: 2rem;
-                justify-content: center;
-                gap: 2rem;
-            }
-            }
 
+          .content {
+            padding: 2rem 1rem;
+            min-width: auto !important;
+          }
+
+          .quote-icon.left {
+            left: 0;
+          }
+
+          .quote-icon.right {
+            right: 0;
+          }
+        }
       </style>
-    <div class="content">
-      <div class="quote-icon left">“</div>
-      <div class="quote" id="quote"></div>
-      <div class="quote-icon right">”</div>
 
-      <div class="author">
-        <img id="author-img" />
-        <span class="author-name" id="author-name"></span>
+      <div class="content" id="content">
+        <div class="quote-icon left">“</div>
+        <div class="quote" id="quote"></div>
+        <div class="quote-icon right">”</div>
+
+        <div class="author">
+          <img id="author-img" />
+          <span class="author-name" id="author-name"></span>
+        </div>
       </div>
-    </div>
-    <div class="nav">
+
+      <div class="nav">
         <button id="prev">&lt;</button>
         <button id="next">&gt;</button>
-    </div>
-
+      </div>
     `;
 
     this.render();
@@ -137,6 +160,12 @@ export class TestimonialSlider extends HTMLElement {
       this.current = (this.current + 1) % testimonials.length;
       this.render();
     });
+
+    // Delay for initial height/width calc
+    setTimeout(() => {
+      this.updateMaxHeight();
+      this.updateMaxWidth();
+    }, 0);
   }
 
   render() {
@@ -145,6 +174,45 @@ export class TestimonialSlider extends HTMLElement {
     this.shadowRoot.getElementById("author-name").textContent = t.name;
     this.shadowRoot.getElementById("author-img").src = t.image;
     this.shadowRoot.getElementById("author-img").alt = t.name;
+
+    this.updateMaxHeight();
+    this.updateMaxWidth();
+  }
+
+  updateMaxHeight() {
+    const quote = this.shadowRoot.getElementById("quote");
+
+    const currentText = this.testimonials[this.current].text;
+    quote.style.minHeight = "auto";
+
+    let maxHeight = 0;
+
+    for (const t of this.testimonials) {
+      quote.textContent = t.text;
+      const height = quote.offsetHeight;
+      if (height > maxHeight) maxHeight = height;
+    }
+
+    quote.textContent = currentText;
+    quote.style.minHeight = `${maxHeight}px`;
+  }
+
+  updateMaxWidth() {
+    const content = this.shadowRoot.getElementById("content");
+    const quote = this.shadowRoot.getElementById("quote");
+
+    const currentText = this.testimonials[this.current].text;
+
+    let maxWidth = 0;
+
+    for (const t of this.testimonials) {
+      quote.textContent = t.text;
+      const width = quote.offsetWidth;
+      if (width > maxWidth) maxWidth = width;
+    }
+
+    quote.textContent = currentText;
+    content.style.minWidth = `${maxWidth + 100}px`; // Add buffer
   }
 }
 

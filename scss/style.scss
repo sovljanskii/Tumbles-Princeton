@@ -4,8 +4,8 @@
 @use "footer";
 @use "buttons";
 @use "spacing";
-@use "marquee";
 @use "pages/home";
+@use "cta-section";
 
 * {
   margin: 0;
@@ -13,18 +13,18 @@
 }
 body {
   font-family: "Rubik", sans-serif;
+  color: #232323;
   font-size: 1.25rem;
   margin: 0;
   background-color: $bg-color;
 }
 
 section {
-  padding: $section-padding 0;
+  padding: $section-padding $global-padding;
   overflow: hidden;
 }
 .container {
   max-width: $site-width;
-  padding: 0 $global-padding;
   margin: 0 auto;
   display: flex;
   flex-direction: column;

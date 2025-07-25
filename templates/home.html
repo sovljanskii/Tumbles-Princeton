@@ -30,26 +30,7 @@
         The Learning Playground For Ages 4 Months to 12 Years
       </h2>
     </div>
-    <div class="marquee-wrapper">
-      <div class="marquee">
-        <img src="/assets/home/marquee1.svg" alt="marquee image" />
-        <img src="/assets/home/marquee2.svg" alt="marquee image" />
-        <img src="/assets/home/marquee3.svg" alt="marquee image" />
-        <img src="/assets/home/marquee4.svg" alt="marquee image" />
-        <img src="/assets/home/marquee5.svg" alt="marquee image" />
-        <img src="/assets/home/marquee6.svg" alt="marquee image" />
-        <img src="/assets/home/marquee7.svg" alt="marquee image" />
-      </div>
-      <div class="marquee">
-        <img src="/assets/home/marquee1.svg" alt="marquee image" />
-        <img src="/assets/home/marquee2.svg" alt="marquee image" />
-        <img src="/assets/home/marquee3.svg" alt="marquee image" />
-        <img src="/assets/home/marquee4.svg" alt="marquee image" />
-        <img src="/assets/home/marquee5.svg" alt="marquee image" />
-        <img src="/assets/home/marquee6.svg" alt="marquee image" />
-        <img src="/assets/home/marquee7.svg" alt="marquee image" />
-      </div>
-    </div>
+    <img-marquee></img-marquee>
     <div class="container">
       <p class="small-width">
         Non-competitive programs that support physical and emotional growth with
@@ -77,9 +58,9 @@
           image="/assets/home/camps.webp"
         ></class-card>
       </div>
-      <div class="parties">
+      <div class="parties centered">
         <h3 class="h2">Parties</h3>
-        <p>
+        <p class="small-width">
           Have a blast celebrating important milestones and let us take care of
           the rest.
         </p>
@@ -135,27 +116,7 @@
       <btn-arrow class="primary" href="/signup">Try a Class</btn-arrow>
     </div>
   </section>
-  <section class="cta-section">
-    <div class="container">
-      <img
-        src="/assets/home/cta-background-image.webp"
-        class="background-image"
-      />
-      <div class="top">
-        <p class="h2">
-          Ready To<br />
-          Get Started?
-        </p>
-        <img src="/assets/home/smiley5.svg" class="smiley-image" />
-      </div>
-      <div class="cta-text">
-        <p>Want to try us out before taking the leap?</p>
-        <btn-arrow class="primary" href="/signup"
-          >Sign up for a Trial Class</btn-arrow
-        >
-      </div>
-    </div>
-  </section>
+  <cta-section></cta-section>
   <section class="testimonial-section">
     <div class="container centered">
       <h2 class="h2">What parents & kids are saying<br />about Tumbles</h2>
@@ -171,7 +132,7 @@
     "text": "Amazing place for my kids! Staff is always helpful and the activities are engaging.",
     "image": "/assets/testimonials/john.webp"
   }
-]'></testimonial-slider>
+]'/>
 </div>
 
 </template>
