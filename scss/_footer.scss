@@ -82,7 +82,8 @@
         gap: 2.25rem;
       }
       .contact-info {
-        display: flex;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
         gap: 3rem;
         .socials {
           display: flex;

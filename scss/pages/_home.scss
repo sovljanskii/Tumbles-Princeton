@@ -70,8 +70,20 @@
     width: 100%;
     height: 100%;
     border-radius: 1rem;
+    object-fit: cover;
   }
 }
+@media (max-width: 900px) {
+  .class-card {
+    grid-auto-flow: dense;
+    .right-image {
+      order: -1;
+      aspect-ratio: 19/10;
+      height: auto;
+    }
+  }
+}
+
 .parties {
   background-image: url("/assets/home/parties.webp");
   background-size: cover;
