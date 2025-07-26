@@ -36,18 +36,19 @@
   display: flex;
   align-items: center;
   border-radius: 0.5rem;
+  overflow: visible;
   clip-path: polygon(0 0, calc(100% - 30px) 0, 100% 50%, calc(100% - 30px) 100%, 0 100%);
   transition: clip-path 0.3s ease;
+  position: relative;
 }
 .header .top-wrapper.nav-open {
-  clip-path: none;
   border-radius: 0.5rem;
 }
 .header .top-wrapper .left-wrapper {
   display: flex;
   align-items: center;
-  height: 60px;
   flex-grow: 1;
+  height: 60px;
 }
 .header .top-wrapper .left-wrapper .logo-link {
   height: 100%;
@@ -127,17 +128,28 @@
   .header .top-wrapper {
     flex-direction: column;
     width: 100%;
+    position: relative;
+    clip-path: none;
+    background-color: transparent;
   }
   .header .top-wrapper .left-wrapper {
     width: 100%;
+    background-color: #42497f;
+    border-radius: 0.5rem;
+    clip-path: polygon(0 0, calc(100% - 30px) 0, 100% 50%, calc(100% - 30px) 100%, 0 100%);
   }
   .header .top-wrapper .left-wrapper .hamburger {
     display: block;
   }
   .header .top-wrapper nav {
+    position: absolute;
+    top: 120%;
+    left: 0;
     width: 100%;
     display: none;
     background-color: #42497f;
+    border-radius: 0.5rem;
+    z-index: 1000;
   }
   .header .top-wrapper nav.open {
     display: block;
