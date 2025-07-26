@@ -135,6 +135,7 @@ $header-radius: 0.5rem;
       position: relative;
       clip-path: none;
       background-color: transparent;
+
       .left-wrapper {
         width: 100%;
         background-color: #42497f;
@@ -157,13 +158,21 @@ $header-radius: 0.5rem;
         top: 120%;
         left: 0;
         width: 100%;
-        display: none;
         background-color: #42497f;
         border-radius: $header-radius;
         z-index: 1000;
 
+        // 🧈 Animation styles
+        max-height: 0;
+        opacity: 0;
+        overflow: hidden;
+        transform: translateY(-10px);
+        transition: max-height 0.4s ease, opacity 0.3s ease, transform 0.3s ease;
+
         &.open {
-          display: block;
+          max-height: 500px; // adjust based on expected content
+          opacity: 1;
+          transform: translateY(0);
         }
 
         ul {

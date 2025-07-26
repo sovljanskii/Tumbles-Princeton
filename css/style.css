@@ -146,13 +146,19 @@
     top: 120%;
     left: 0;
     width: 100%;
-    display: none;
     background-color: #42497f;
     border-radius: 0.5rem;
     z-index: 1000;
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transform: translateY(-10px);
+    transition: max-height 0.4s ease, opacity 0.3s ease, transform 0.3s ease;
   }
   .header .top-wrapper nav.open {
-    display: block;
+    max-height: 500px;
+    opacity: 1;
+    transform: translateY(0);
   }
   .header .top-wrapper nav ul {
     flex-direction: column;
