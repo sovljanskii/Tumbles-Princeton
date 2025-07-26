@@ -162,7 +162,6 @@ $header-radius: 0.5rem;
         border-radius: $header-radius;
         z-index: 1000;
 
-        // 🧈 Animation styles
         max-height: 0;
         opacity: 0;
         overflow: hidden;
@@ -170,7 +169,7 @@ $header-radius: 0.5rem;
         transition: max-height 0.4s ease, opacity 0.3s ease, transform 0.3s ease;
 
         &.open {
-          max-height: 500px; // adjust based on expected content
+          max-height: 500px;
           opacity: 1;
           transform: translateY(0);
         }
