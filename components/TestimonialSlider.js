@@ -55,7 +55,7 @@ export class TestimonialSlider extends HTMLElement {
           font-style: italic;
           max-width: 700px;
           margin: 0 auto 2rem;
-          font-size: 1.125rem;
+          font-size: 1.35rem;
           line-height: 1.7;
           color: #333;
         }

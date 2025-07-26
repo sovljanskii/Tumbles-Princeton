@@ -22,6 +22,7 @@ body {
 section {
   padding: $section-padding $global-padding;
   overflow: hidden;
+  gap: $large-space;
 }
 .container {
   max-width: $site-width;

@@ -6,7 +6,7 @@
   position: relative;
   border-radius: $radius;
   gap: 8rem;
-  padding: $medium-space;
+
   .background-image {
     position: absolute;
     object-fit: cover;
@@ -21,6 +21,7 @@
     display: flex;
     flex-direction: column;
     gap: $small-space;
+    padding: $medium-space;
   }
 
   .smiley-image {
@@ -35,6 +36,8 @@
     align-items: center;
     padding: $small-space;
     border-radius: $radius;
+    margin: $medium-space;
+
     p {
       font-size: 2rem;
     }
@@ -62,6 +65,7 @@
       text-align: center;
       justify-content: center;
       width: 70%;
+      margin: 0 !important;
       margin-top: $medium-space;
       transform: translate(-50%, 30%);
       padding: $medium-space !important;

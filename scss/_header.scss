@@ -30,7 +30,6 @@
     }
 
     .left-wrapper {
-      border-radius: 8px;
       display: flex;
       align-items: center;
       height: 60px;
@@ -46,13 +45,56 @@
       }
 
       .hamburger {
-        display: none;
+        width: 30px;
+        height: 20px;
+        margin-right: 2rem;
+        margin-left: auto;
+        position: relative;
         background: none;
         border: none;
-        font-size: 2rem;
-        color: white;
-        margin-left: auto;
         cursor: pointer;
+        display: none;
+        transform: translateY(-20%);
+
+        span {
+          display: block;
+          position: absolute;
+          height: 4px;
+          width: 100%;
+          background: white;
+          border-radius: 4px;
+          opacity: 1;
+          left: 0;
+          transition: 0.25s ease-in-out;
+        }
+
+        span:nth-child(1) {
+          top: 0px;
+        }
+
+        span:nth-child(2),
+        span:nth-child(3) {
+          top: 13px;
+        }
+
+        span:nth-child(4) {
+          top: 26px;
+        }
+
+        &.open span:nth-child(1),
+        &.open span:nth-child(4) {
+          top: 13px;
+          width: 0%;
+          left: 50%;
+        }
+
+        &.open span:nth-child(2) {
+          transform: rotate(45deg);
+        }
+
+        &.open span:nth-child(3) {
+          transform: rotate(-45deg);
+        }
       }
     }
 
@@ -76,6 +118,7 @@
             text-decoration: none;
             transition: opacity 0.3s ease;
           }
+
           a:hover {
             opacity: 0.7;
           }
@@ -92,7 +135,6 @@
 
         .hamburger {
           display: block;
-          margin-right: 1rem;
         }
       }
 

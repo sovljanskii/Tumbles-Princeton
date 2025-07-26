@@ -11,6 +11,7 @@ export function Header(tpl) {
   hamburger?.addEventListener("click", () => {
     nav.classList.toggle("open");
     topWrapper.classList.toggle("nav-open");
+    hamburger.classList.toggle("open"); // Toggle hamburger animation
   });
 
   return header;
