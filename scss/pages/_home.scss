@@ -55,7 +55,8 @@
   }
 }
 .class-card {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: $medium-space;
   border-radius: $radius;
   border: 2px solid #232323;
@@ -79,7 +80,7 @@
     object-fit: cover;
   }
 }
-@media (max-width: 900px) {
+@media (max-width: 1200px) {
   .class-card {
     grid-auto-flow: dense;
     .right-image {

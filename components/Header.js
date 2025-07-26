@@ -6,9 +6,11 @@ export function Header(tpl) {
 
   const hamburger = header.querySelector(".hamburger");
   const nav = header.querySelector("nav");
+  const topWrapper = header.querySelector(".top-wrapper");
 
   hamburger?.addEventListener("click", () => {
     nav.classList.toggle("open");
+    topWrapper.classList.toggle("nav-open");
   });
 
   return header;
