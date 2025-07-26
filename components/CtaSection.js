@@ -6,7 +6,7 @@ export class CtaSection extends HTMLElement {
     <section class="cta-section">
         <div class="container">
             <img
-                src="/assets/home/cta-background-image.webp"
+                src="/assets/global/cta-background-image.webp"
                 class="background-image"
             />
             <div class="top">

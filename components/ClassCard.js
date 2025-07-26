@@ -12,7 +12,7 @@ export class ClassCard extends HTMLElement {
       <div class="class-card">
         <div class="content">
           <div class="class-text">
-            <h3 class="h2">${title}</h3>
+            <h3 class="h3">${title}</h3>
             <p>${text}</p>
           </div>
           <btn-arrow class="primary" href="${link}">${linkText}</btn-arrow>

@@ -129,6 +129,9 @@ export class TestimonialSlider extends HTMLElement {
             right: 0;
           }
         }
+          #prev{
+            transform: rotate(180deg);
+          }
       </style>
 
       <div class="content" id="content">
@@ -143,8 +146,8 @@ export class TestimonialSlider extends HTMLElement {
       </div>
 
       <div class="nav">
-        <button id="prev">&lt;</button>
-        <button id="next">&gt;</button>
+        <button id="prev"><img src="/assets/global/right-arrow.svg" alt="Previous" /></button>
+        <button id="next"><img src="/assets/global/right-arrow.svg" alt="Next" /></button>
       </div>
     `;
 

@@ -11,12 +11,16 @@
   border-radius: 50vw;
   border: solid black 1px;
   gap: 10px;
-  transition: background-color 0.2s ease, color 0.2s ease,
-    border-color 0.2s ease;
+  transition: background-color 0.3s ease, color 0.3s ease,
+    border-color 0.3s ease;
+  a {
+    display: flex;
+    justify-content: space-between;
+  }
 }
 .button:hover img {
   transform: translateX(2px);
-  transition: transform 0.2s ease;
+  transition: transform 0.3s ease;
 }
 
 .button.primary {
@@ -24,7 +28,7 @@
   color: white;
 }
 .button.primary:hover {
-  background-color: green;
+  background-color: #ff7124;
 }
 
 .button.secondary {
